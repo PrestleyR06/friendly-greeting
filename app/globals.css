@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Kregan DEMO font for logo - custom font */
+@font-face {
+  font-family: 'Kregan DEMO';
+  src: url('/fonts/Kregan-DEMO-Regular.otf') format('opentype'),
+       url('/fonts/Kregan-DEMO-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #f3faff;
+  --foreground: #3c4856;
+  --card: #ffffff;
+  --card-foreground: #3c4856;
+  --popover: #ffffff;
+  --popover-foreground: #3c4856;
+  --primary: #31adff;
+  --primary-foreground: #ffffff;
+  --secondary: #f3faff;
+  --secondary-foreground: #3c4856;
+  --muted: #e8f4fc;
+  --muted-foreground: #5a6a7a;
+  --accent: #e8f4fc;
+  --accent-foreground: #3c4856;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #ffffff;
+  --border: #d1e5f4;
+  --input: #d1e5f4;
+  --ring: #31adff;
+  --chart-1: #31adff;
+  --chart-2: #3c4856;
+  --chart-3: #5cb8ff;
+  --chart-4: #1a9ef0;
+  --chart-5: #6ac1ff;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #3c4856;
+  --sidebar-primary: #31adff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8f4fc;
+  --sidebar-accent-foreground: #3c4856;
+  --sidebar-border: #d1e5f4;
+  --sidebar-ring: #31adff;
+}
+
+.dark {
+  --background: #0f1419;
+  --foreground: #e8f4fc;
+  --card: #1a2430;
+  --card-foreground: #e8f4fc;
+  --popover: #1a2430;
+  --popover-foreground: #e8f4fc;
+  --primary: #31adff;
+  --primary-foreground: #ffffff;
+  --secondary: #1a2430;
+  --secondary-foreground: #e8f4fc;
+  --muted: #243040;
+  --muted-foreground: #8fa3b8;
+  --accent: #243040;
+  --accent-foreground: #e8f4fc;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: #ffffff;
+  --border: #2a3a4a;
+  --input: #2a3a4a;
+  --ring: #31adff;
+  --chart-1: #31adff;
+  --chart-2: #5cb8ff;
+  --chart-3: #1a9ef0;
+  --chart-4: #6ac1ff;
+  --chart-5: #8fd0ff;
+  --sidebar: #1a2430;
+  --sidebar-foreground: #e8f4fc;
+  --sidebar-primary: #31adff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #243040;
+  --sidebar-accent-foreground: #e8f4fc;
+  --sidebar-border: #2a3a4a;
+  --sidebar-ring: #31adff;
+}
+
+@theme inline {
+  --font-sans: 'Poppins', 'Poppins Fallback', system-ui, sans-serif;
+  --font-heading: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-logo: 'Kregan DEMO', 'Georgia', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Apply Inter font to all headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Logo font utility class */
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+/* Responsive Hero Image - Fully Optimized for all screen sizes */
+.responsive-hero-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Mobile (320px - 767px) */
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Tablet (768px - 1023px) */
+  @media (min-width: 768px) {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+  }
+  
+  /* Laptop (1024px - 1439px) */
+  @media (min-width: 1024px) {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Desktop (1440px+) */
+  @media (min-width: 1440px) {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Image optimizations - Perfect centering and alignment */
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a9ef0;
+}
